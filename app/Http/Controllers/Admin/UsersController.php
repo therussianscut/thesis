@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Role;
+use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,11 @@ $this->middleware('auth');
     public function edit(User $user)
     {
 
+        if(Gate::denies('edit-users')) {
+
+            return redirect(route('admin.users.index'));
+        }
+
     $roles= Role::all();
     return view('admin.users.edit')->with([
 
@@ -78,6 +84,12 @@ $this->middleware('auth');
      */
     public function destroy(User $user)
     {
+
+        if(Gate::denies('delete-users')) {
+
+            return redirect(route('admin.users.index'));
+        }
+
         $user->roles()->detach();
         $user->delete();
 

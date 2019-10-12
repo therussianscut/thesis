@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ $this->middleware('auth');
      */
     public function index()
     {
-        
+
 
         $users = User::all();
         return view ('admin.users.index')->with('users', $users);
@@ -33,11 +34,6 @@ $this->middleware('auth');
 
     }
 
-   
-
-    
-
-   
 
     /**
      * Show the form for editing the specified resource.
@@ -45,21 +41,33 @@ $this->middleware('auth');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+
+    $roles= Role::all();
+    return view('admin.users.edit')->with([
+
+        'user' => $user,
+        'roles' => $roles
+
+    ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param User $user
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+
+
+        $user->roles()->sync($request->roles);
+
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -68,8 +76,11 @@ $this->middleware('auth');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->roles()->detach();
+        $user->delete();
+
+        return redirect()->route('admin.users.index');
     }
 }

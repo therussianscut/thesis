@@ -34,3 +34,4 @@ Route::get('/index', 'PagesController@index');
 
 
 
+Route::resource('posts', 'PostsController');

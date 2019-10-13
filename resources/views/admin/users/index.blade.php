@@ -10,8 +10,6 @@
                 <div class="card-body">
 
 
-
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -45,18 +43,10 @@
                                         @endcan
                                 </td>
                             </tr>
-
-
                     @endforeach
 
                             </tbody>
-
-
-
                         </div>
-
-
-
                 </div>
             </div>
         </div>

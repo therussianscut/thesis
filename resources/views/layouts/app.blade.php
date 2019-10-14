@@ -20,6 +20,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -47,6 +49,11 @@
                 <a class="navbar-brand" href="{{ url('/posts') }}">
 
                     <div>Blog Posts</div>
+                </a>
+
+                <a class="navbar-brand" href="{{ url('/posts/create') }}">
+
+                    <div>Create Post</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -103,8 +110,13 @@
         </nav>
 
         <main class="py-4">
+            @include('inc.messages')
             @yield('content')
         </main>
     </div>
+
+
+
+
 </body>
 </html>

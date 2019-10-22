@@ -145,6 +145,7 @@ class PostsController extends Controller
 
                 'image' =>request()->image->store('uploads', 'public'),
 
+
             ]);
 
 

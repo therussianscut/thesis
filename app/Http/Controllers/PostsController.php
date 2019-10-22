@@ -46,7 +46,7 @@ class PostsController extends Controller
 
             'title' => 'required',
             'body' => 'required',
-            'image' => 'file|image|max:10000'
+            'image' => 'file|image|max:10000',
 
         ]);
 

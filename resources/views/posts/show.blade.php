@@ -9,9 +9,25 @@
 
     <div>
 
-        {!!$post->body!!}}
+        {!!$post->body!!}
 
     </div>
+
+    <div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <h3> Image Here!!</h3>
+                    <img src="{{ asset('storage/' . $post->image) }}" alt="" class="img-thumbnail">
+                </div>
+            </div>
+
+
+
+    </div>
+
+
 
     <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
 

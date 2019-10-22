@@ -18,8 +18,7 @@ class PostsController extends Controller
 
         $posts= Post::orderBy('created_at', 'desc')->paginate(1);
 
-        return view('posts.index')->with('posts', $posts);
-    }
+        return view('posts.index')->with('posts', $posts);}
 
     /**
      * Show the form for creating a new resource.
@@ -46,13 +45,21 @@ class PostsController extends Controller
         $this->validate($request, [
 
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'image' => 'file|image|max:10000'
 
         ]);
 
+
+
+
         $post = new Post;
+
+        $this->storeImage($post);
+
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->image = $request->input('image');
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created');
@@ -82,6 +89,7 @@ class PostsController extends Controller
     {
 
         $post = Post::find($id);
+        $this->storeImage($post);
         return view ('posts.edit')->with('post', $post);
 
 
@@ -125,6 +133,22 @@ class PostsController extends Controller
         $post= Post::find($id);
         $post->delete();
         return redirect('/posts')->with('success', 'Post deleted');
+
+    }
+
+    private function storeImage($post){
+
+
+        if (request()->has('image')){
+
+            $post->update([
+
+                'image' =>request()->image->store('uploads', 'public'),
+
+            ]);
+
+
+        }
 
     }
 }

@@ -4,7 +4,7 @@
 <h1>Create Post </h1>
 
 
-        {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST']) !!}
+        {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 
             <div class="form-group">
 
@@ -18,6 +18,15 @@
 
                 {{Form::label('body', 'Body')}}
                 {{Form::textarea('body', '', ['id'=>'content', 'class' =>'form-control', 'placeholder' => 'Main Body'])}}
+
+
+
+            </div>
+
+            <div class="form-group">
+
+                {{Form::label('image', 'image', ['class' => 'control-label']) }}
+                {{Form::file('image', ['class' => 'form-control']) }}
 
 
 

@@ -17,6 +17,8 @@
 
     {{$posts->links()}}
 
+
+    
     @else
 
     <p><strong> No Posts here!</strong></p>

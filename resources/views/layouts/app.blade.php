@@ -46,6 +46,11 @@
                     <div>Index</div>
                 </a>
 
+                <a class="navbar-brand" href="{{ url('/messages') }}">
+
+                    <div>Messages</div>
+                </a>
+
                 <a class="navbar-brand" href="{{ url('/posts') }}">
 
                     <div>Blog Posts</div>

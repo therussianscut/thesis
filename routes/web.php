@@ -20,8 +20,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){
 
 Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'store']]);
@@ -31,7 +29,12 @@ Route::resource('/users', 'UsersController', ['except' => ['show', 'create', 'st
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 Route::get('/index', 'PagesController@index');
-
+Route::get('/messages', 'PostsController@messages');
 
 
 Route::resource('posts', 'PostsController');
+
+
+Route::any('users/{id}', function ($id) {
+    
+});

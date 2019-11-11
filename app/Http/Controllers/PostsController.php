@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Message;
+use Carbon\Carbon;
 
 class PostsController extends Controller
 {
@@ -77,6 +79,12 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         return view('posts.show')->with('post', $post);
+    }
+
+    public function messages()
+    {
+        $messages= Message::all();
+        return view('pages.messages')->with('messages', $messages);
     }
 
     /**

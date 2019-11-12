@@ -9,11 +9,14 @@
 <h1>Twitter Messages</h1>
 
 
-<form action='/create' method="post">
+<form action='/messages' method="post">
+  {{ csrf_field() }}
 
 
   <input type="text" name="title" placeholder="title"> 
   <input type="text" name="content" placeholder="content"> 
+
+  <button type="submit"> Submit message </button>
 
 </form>
 

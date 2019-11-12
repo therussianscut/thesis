@@ -31,6 +31,8 @@ Route::get('/services', 'PagesController@services');
 Route::get('/index', 'PagesController@index');
 Route::get('/messages', 'PostsController@messages');
 
+Route::post('/messages', 'MessageController@create');
+
 
 Route::resource('posts', 'PostsController');
 

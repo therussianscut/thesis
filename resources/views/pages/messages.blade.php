@@ -1,9 +1,8 @@
+
+
+
+
 @extends('layouts.app');
-
-
-
-use Carbon\Carbon;
-
 
 
 @section('content')
@@ -31,7 +30,8 @@ use Carbon\Carbon;
          <br>
           {{$message->content}} 
          <br>
-         {{$message->created_at }}
+         {{Carbon\Carbon::parse($message->created_at)->diffForHumans() }}
+         {{ Carbon\Carbon::parse($message->created_at)->format('Y-m-d , G:i:s') }}
         
         
         </li>

@@ -60,7 +60,11 @@ class PostsController extends Controller
         $this->storeImage($post);
 
         $post->title = $request->input('title');
+      //  $post->title = 'title na';
+
         $post->body = $request->input('body');
+        //$post->image = '9XwxUpfVNadalZ7v9G9iB7hbcBfQ2ev1HLm5avcl.png';
+        
         $post->image = $request->input('image');
         $post->save();
 

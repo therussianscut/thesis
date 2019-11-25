@@ -19,7 +19,9 @@
             <div class="row">
                 <div class="col-12">
                     <h3> Image Here!!</h3>
-                    <img src="{{ asset('storage/' . $post->image) }}" alt="" class="img-thumbnail">
+                    <img src="{{ asset('storage/uploads/' . $post->image) }}" alt="" class="img-thumbnail">
+                    <img src="http://127.0.0.1:8000/storage/uploads/9XwxUpfVNadalZ7v9G9iB7hbcBfQ2ev1HLm5avcl.png" alt="" class="img-thumbnail">
+                    <h4>"{{ asset('storage/uploads/' . $post->image) }}"</h4>
                 </div>
             </div>
 
